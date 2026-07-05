@@ -1,5 +1,7 @@
 # Playwright + Cucumber E2E Test Automation Framework
 
+[![E2E Tests](https://github.com/christobj/playwright-cucumber-e2e-framework/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/christobj/playwright-cucumber-e2e-framework/actions/workflows/e2e-tests.yml)
+
 ## 📌 Overview
 
 End-to-end test automation framework built with **Playwright** and **Cucumber** (BDD-style) targeting [automationexercise.com](https://automationexercise.com/), a public demo e-commerce site. Built as a personal portfolio project to demonstrate a production-style JavaScript test automation setup.
