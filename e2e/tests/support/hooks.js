@@ -17,12 +17,20 @@ setDefaultTimeout(getConfig().timeout * 2);
 BeforeAll(async function () {
   const config = getConfig();
   const launcher = browsers[config.browserName] || chromium;
-  browser = await launcher.launch({ headless: config.headless, slowMo: config.slowMo });
+  browser = await launcher.launch({
+    headless: config.headless,
+    slowMo: config.slowMo,
+    args: ['--disable-blink-features=AutomationControlled'],
+  });
 });
 
 Before(async function () {
   const config = getConfig();
-  this.context = await browser.newContext({ viewport: config.viewport, baseURL: config.baseURL });
+  this.context = await browser.newContext({
+    viewport: config.viewport,
+    baseURL: config.baseURL,
+    userAgent: config.userAgent,
+  });
   this.context.setDefaultTimeout(config.timeout);
   this.page = await this.context.newPage();
 });

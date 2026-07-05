@@ -4,7 +4,7 @@ const common = {
   paths: ['e2e/tests/features/**/*.feature'],
   format: ['@cucumber/pretty-formatter', 'json:reports/cucumber_report.json'],
   formatOptions: { snippetInterface: 'async-await' },
-  publishQuiet: true,
+  retry: 1,
 };
 
 module.exports = {
