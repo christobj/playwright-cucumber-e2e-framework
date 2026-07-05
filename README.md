@@ -76,7 +76,7 @@ SLOWMO=0
 
 ## 📝 Test Reports
 
-Each run writes `reports/cucumber_report.json`, then a `posttest` hook converts it into an HTML report:
+Every run generates a self-contained HTML report via Cucumber's built-in `html` formatter:
 
 ```
 reports/cucumber_report.html
