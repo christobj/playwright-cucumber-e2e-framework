@@ -10,6 +10,8 @@ const { chromium, firefox, webkit } = require('playwright');
 const { getConfig } = require('../utils/env.util');
 
 const browsers = { chromium, firefox, webkit };
+const AD_NETWORK_PATTERN =
+  /doubleclick\.net|googlesyndication\.com|googleadservices\.com|google\.com\/pagead|adservice\.google/i;
 let browser;
 
 setDefaultTimeout(getConfig().timeout * 2);
@@ -32,6 +34,7 @@ Before(async function () {
     userAgent: config.userAgent,
   });
   this.context.setDefaultTimeout(config.timeout);
+  await this.context.route(AD_NETWORK_PATTERN, (route) => route.abort());
   this.page = await this.context.newPage();
 });
 
