@@ -90,7 +90,7 @@ npm run report:open
 
 ## ✅ CI/CD (GitHub Actions)
 
-`.github/workflows/e2e-tests.yml` runs the suite on every push/PR to `main` (and supports manual dispatch with a browser choice). The HTML report and screenshots are uploaded as a build artifact on every run, pass or fail.
+`.github/workflows/e2e-tests.yml` runs the suite on every push/PR to `main`, once daily at 03:00 UTC (to catch breakage from changes on the live site), and on manual dispatch with a browser choice. The HTML report and screenshots are uploaded as a build artifact on every run, pass or fail. GitHub emails failure notifications automatically for scheduled runs on repos you own (Settings → Notifications → Actions).
 
 ## 🌿 Branching Strategy (GitHub Flow)
 
