@@ -1,11 +1,12 @@
 class HeaderComponent {
   constructor(page) {
     this.page = page;
-    this.homeLink = page.locator('a[href="/"]').first();
-    this.productsLink = page.locator('a[href="/products"]');
-    this.cartLink = page.locator('a[href="/view_cart"]').first();
-    this.signupLoginLink = page.locator('a[href="/login"]');
-    this.logoutLink = page.locator('a[href="/logout"]');
+    const nav = page.locator('.shop-menu');
+    this.homeLink = nav.getByRole('link', { name: 'Home' });
+    this.productsLink = nav.getByRole('link', { name: 'Products' });
+    this.cartLink = nav.getByRole('link', { name: 'Cart' });
+    this.signupLoginLink = nav.getByRole('link', { name: 'Signup / Login' });
+    this.logoutLink = nav.getByRole('link', { name: 'Logout' });
     this.loggedInAsText = page.getByText(/Logged in as/i);
   }
 

@@ -3,25 +3,27 @@ const { BasePage } = require('./base.page');
 class AccountInformationPage extends BasePage {
   constructor(page) {
     super(page);
+    // Both title radios share data-qa="title", so getByTestId can't disambiguate them; use the id.
     this.titleMr = page.locator('#id_gender1');
-    this.passwordInput = page.locator('#password');
-    this.daysSelect = page.locator('#days');
-    this.monthsSelect = page.locator('#months');
-    this.yearsSelect = page.locator('#years');
-    this.newsletterCheckbox = page.locator('#newsletter');
-    this.firstNameInput = page.locator('#first_name');
-    this.lastNameInput = page.locator('#last_name');
-    this.companyInput = page.locator('#company');
-    this.address1Input = page.locator('#address1');
-    this.address2Input = page.locator('#address2');
-    this.countrySelect = page.locator('#country');
-    this.stateInput = page.locator('#state');
-    this.cityInput = page.locator('#city');
-    this.zipcodeInput = page.locator('#zipcode');
-    this.mobileNumberInput = page.locator('#mobile_number');
-    this.createAccountButton = page.locator('button[data-qa="create-account"]');
-    this.accountCreatedHeading = page.locator('[data-qa="account-created"]');
-    this.continueButton = page.locator('[data-qa="continue-button"]');
+    this.passwordInput = page.getByTestId('password');
+    this.daysSelect = page.getByTestId('days');
+    this.monthsSelect = page.getByTestId('months');
+    this.yearsSelect = page.getByTestId('years');
+    this.newsletterCheckbox = page.getByLabel('Sign up for our newsletter!');
+    this.firstNameInput = page.getByTestId('first_name');
+    this.lastNameInput = page.getByTestId('last_name');
+    this.companyInput = page.getByTestId('company');
+    // The address1 field's data-qa value is "address" (not "address1") on the live site.
+    this.address1Input = page.getByTestId('address');
+    this.address2Input = page.getByTestId('address2');
+    this.countrySelect = page.getByTestId('country');
+    this.stateInput = page.getByTestId('state');
+    this.cityInput = page.getByTestId('city');
+    this.zipcodeInput = page.getByTestId('zipcode');
+    this.mobileNumberInput = page.getByTestId('mobile_number');
+    this.createAccountButton = page.getByTestId('create-account');
+    this.accountCreatedHeading = page.getByTestId('account-created');
+    this.continueButton = page.getByTestId('continue-button');
   }
 
   async fillAccountInformation(user) {

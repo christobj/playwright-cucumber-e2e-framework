@@ -6,7 +6,8 @@ class CartPage extends BasePage {
     super(page);
     this.header = new HeaderComponent(page);
     this.cartRows = page.locator('#cart_info_table tbody tr');
-    this.proceedToCheckoutButton = page.locator('a:has-text("Proceed To Checkout")');
+    // This anchor has no href, so it carries no implicit link role -- match on text instead.
+    this.proceedToCheckoutButton = page.getByText('Proceed To Checkout');
   }
 
   async goto() {

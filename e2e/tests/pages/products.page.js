@@ -5,12 +5,12 @@ class ProductsPage extends BasePage {
   constructor(page) {
     super(page);
     this.header = new HeaderComponent(page);
-    this.searchInput = page.locator('#search_product');
+    this.searchInput = page.getByPlaceholder('Search Product');
     this.searchButton = page.locator('#submit_search');
-    this.searchedProductsHeading = page.locator('h2.title', { hasText: 'Searched Products' });
+    this.searchedProductsHeading = page.getByRole('heading', { name: 'Searched Products' });
     this.productCards = page.locator('.features_items .product-image-wrapper');
-    this.productNames = page.locator('.features_items .productinfo p');
-    this.continueShoppingButton = page.locator('button:has-text("Continue Shopping")');
+    this.productNames = this.productCards.locator('.productinfo p');
+    this.continueShoppingButton = page.getByRole('button', { name: 'Continue Shopping' });
   }
 
   async goto() {
@@ -25,7 +25,8 @@ class ProductsPage extends BasePage {
   async addFirstProductToCart() {
     const card = this.productCards.first();
     await card.hover();
-    await card.locator('a.add-to-cart').first().click();
+    // This anchor has no href, so it carries no implicit link role -- match on text instead.
+    await card.getByText('Add to cart').first().click();
   }
 
   async viewFirstProduct() {
@@ -33,7 +34,7 @@ class ProductsPage extends BasePage {
     await card.hover();
     await Promise.all([
       this.page.waitForURL(/\/product_details\//),
-      card.locator('a:has-text("View Product")').click(),
+      card.getByRole('link', { name: 'View Product' }).click(),
     ]);
   }
 }

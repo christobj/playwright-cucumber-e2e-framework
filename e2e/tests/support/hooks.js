@@ -6,13 +6,16 @@ const {
   Status,
   setDefaultTimeout,
 } = require('@cucumber/cucumber');
-const { chromium, firefox, webkit } = require('playwright');
+const { chromium, firefox, webkit, selectors } = require('playwright');
 const { getConfig } = require('../utils/env.util');
 
 const browsers = { chromium, firefox, webkit };
 const AD_NETWORK_PATTERN =
   /doubleclick\.net|googlesyndication\.com|googleadservices\.com|google\.com\/pagead|adservice\.google/i;
 let browser;
+
+// The site exposes its own test hooks via data-qa; use them as the getByTestId() attribute.
+selectors.setTestIdAttribute('data-qa');
 
 setDefaultTimeout(getConfig().timeout * 2);
 

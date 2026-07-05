@@ -3,14 +3,14 @@ const { BasePage } = require('./base.page');
 class LoginPage extends BasePage {
   constructor(page) {
     super(page);
-    this.loginEmailInput = page.locator('input[data-qa="login-email"]');
-    this.loginPasswordInput = page.locator('input[data-qa="login-password"]');
-    this.loginButton = page.locator('button[data-qa="login-button"]');
-    this.loginErrorMessage = page.locator('p:has-text("Your email or password is incorrect!")');
+    this.loginEmailInput = page.getByTestId('login-email');
+    this.loginPasswordInput = page.getByTestId('login-password');
+    this.loginButton = page.getByTestId('login-button');
+    this.loginErrorMessage = page.getByText('Your email or password is incorrect!');
 
-    this.signupNameInput = page.locator('input[data-qa="signup-name"]');
-    this.signupEmailInput = page.locator('input[data-qa="signup-email"]');
-    this.signupButton = page.locator('button[data-qa="signup-button"]');
+    this.signupNameInput = page.getByTestId('signup-name');
+    this.signupEmailInput = page.getByTestId('signup-email');
+    this.signupButton = page.getByTestId('signup-button');
   }
 
   async goto() {
