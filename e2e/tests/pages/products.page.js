@@ -31,7 +31,10 @@ class ProductsPage extends BasePage {
   async viewFirstProduct() {
     const card = this.productCards.first();
     await card.hover();
-    await card.locator('a:has-text("View Product")').click();
+    await Promise.all([
+      this.page.waitForURL(/\/product_details\//),
+      card.locator('a:has-text("View Product")').click(),
+    ]);
   }
 }
 

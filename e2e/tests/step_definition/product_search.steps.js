@@ -33,6 +33,5 @@ When('I view the first product in the list', async function () {
 });
 
 Then('I should be taken to the product details page', async function () {
-  await this.page.waitForURL(/\/product_details\//);
   expect(this.page.url()).to.include('/product_details/');
 });

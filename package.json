@@ -28,7 +28,7 @@
     "e2e",
     "automation"
   ],
-  "author": "",
+  "author": "Christob",
   "license": "MIT",
   "dependencies": {
     "@cucumber/cucumber": "^11.2.0",
