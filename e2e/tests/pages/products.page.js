@@ -25,7 +25,6 @@ class ProductsPage extends BasePage {
   async addFirstProductToCart() {
     const card = this.productCards.first();
     await card.hover();
-    // This anchor has no href, so it carries no implicit link role -- match on text instead.
     await card.getByText('Add to cart').first().click();
   }
 

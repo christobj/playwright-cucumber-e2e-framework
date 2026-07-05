@@ -3,7 +3,6 @@ const { BasePage } = require('./base.page');
 class CheckoutPage extends BasePage {
   constructor(page) {
     super(page);
-    // No data-qa or label on this textarea; name attribute is the only stable hook.
     this.orderCommentTextarea = page.locator('textarea[name="message"]');
     this.placeOrderButton = page.getByRole('link', { name: 'Place Order' });
 

@@ -3,7 +3,6 @@ const { BasePage } = require('./base.page');
 class AccountInformationPage extends BasePage {
   constructor(page) {
     super(page);
-    // Both title radios share data-qa="title", so getByTestId can't disambiguate them; use the id.
     this.titleMr = page.locator('#id_gender1');
     this.passwordInput = page.getByTestId('password');
     this.daysSelect = page.getByTestId('days');
@@ -13,7 +12,6 @@ class AccountInformationPage extends BasePage {
     this.firstNameInput = page.getByTestId('first_name');
     this.lastNameInput = page.getByTestId('last_name');
     this.companyInput = page.getByTestId('company');
-    // The address1 field's data-qa value is "address" (not "address1") on the live site.
     this.address1Input = page.getByTestId('address');
     this.address2Input = page.getByTestId('address2');
     this.countrySelect = page.getByTestId('country');
